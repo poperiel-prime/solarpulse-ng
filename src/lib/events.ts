@@ -1,0 +1,526 @@
+import { byStartAt } from "./dates";
+import type { SolarEvent } from "./types";
+
+/**
+ * SolarPulse NG seed data — the curated Nigeria-first calendar.
+ * All timestamps are ISO 8601 pinned to WAT (+01:00).
+ * To add an event: append a record here with a unique id + stable slug.
+ */
+export const events: SolarEvent[] = [
+  {
+    id: "evt-01",
+    slug: "nigeria-solar-forum-2026",
+    title: "Nigeria Solar Forum 2026",
+    type: "conference",
+    status: "confirmed",
+    keyShow: true,
+    startAt: "2026-03-11T17:00:00+01:00",
+    endAt: "2026-03-12T17:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "Oriental Hotel, Victoria Island, Lagos — mixer at The Gardens, Ikoyi",
+    organizer: "Eventhive",
+    url: "https://solar.eventhive.ng/",
+    price: "paid",
+    priceNote: "Delegate pass pricing on the organizer page.",
+    audience: ["epcs", "investors", "distributors", "policy", "buyers", "media"],
+    whoShouldGo:
+      "Solar executives, project developers, financiers and policy leads who want one dense day of deal-making and market intelligence for the Nigerian solar sector.",
+    summary:
+      "Two-day run: the pre-event mixer opens Wed 11 March at The Gardens, Ikoyi, then the main forum sits at the Oriental Hotel on Thu 12 March — C&I pipelines, mini-grid capital, and where policy is heading in 2026. The mixer takes a separate RSVP on the organizer page.",
+    source: "Eventhive event page",
+  },
+  {
+    id: "evt-02",
+    slug: "powerelec-nigeria-2026",
+    title: "POWERELEC Nigeria 2026",
+    type: "expo",
+    status: "confirmed",
+    keyShow: true,
+    startAt: "2026-02-03T09:00:00+01:00",
+    endAt: "2026-02-05T17:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "Landmark Centre, Victoria Island, Lagos",
+    organizer: "POWERELEC Nigeria",
+    url: "https://www.powerelecnigeria.com",
+    price: "free",
+    priceNote: "Free for pre-registered trade visitors.",
+    audience: ["installers", "epcs", "distributors", "buyers", "technicians"],
+    whoShouldGo:
+      "Installers, EPCs and distributors sourcing panels, inverters, batteries and balance-of-system from importers and OEMs on the floor.",
+    summary:
+      "Three-day power and electrical trade expo with a strong solar hall: modules, inverters, storage and mounting suppliers exhibiting to the West African trade. One of the first sourcing windows of the year.",
+    source: "Organizer website",
+  },
+  {
+    id: "evt-03",
+    slug: "nigeria-solar-generator-day-2026",
+    title: "Nigeria Solar Generator Day 2026",
+    type: "conference",
+    status: "confirmed",
+    startAt: "2026-06-10T09:30:00+01:00",
+    endAt: "2026-06-10T16:30:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "Lagos — venue on organizer page",
+    organizer: "GOGLA, ZE-Gen & VeraSol",
+    url: "https://www.gogla.org/events",
+    price: "unknown",
+    priceNote: "Registration details published by the organizers.",
+    audience: ["distributors", "investors", "policy", "buyers", "media"],
+    whoShouldGo:
+      "Solar generator and SHS companies, appliance distributors, policymakers and anyone tracking the diesel-to-solar switch for Nigerian homes and SMEs.",
+    summary:
+      "A dedicated industry day on solar generators in Nigeria — quality standards, market data and consumer finance — convened by GOGLA, ZE-Gen and VeraSol. Expect new market sizing and quality-verification announcements.",
+    source: "GOGLA events listing",
+  },
+  {
+    id: "evt-04",
+    slug: "solar-storage-live-nigeria-2026",
+    title: "Solar & Storage Live Nigeria 2026",
+    type: "expo",
+    status: "confirmed",
+    flagship: true,
+    keyShow: true,
+    startAt: "2026-07-14T09:00:00+01:00",
+    endAt: "2026-07-15T17:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "Landmark Centre, Victoria Island, Lagos",
+    organizer: "Terrapinn, in partnership with REAN",
+    url: "https://www.terrapinn.com/exhibition/solar-storage-live-nigeria/",
+    price: "unknown",
+    priceNote: "Visitor and delegate registration on the organizer page.",
+    audience: ["installers", "epcs", "distributors", "investors", "buyers", "technicians", "media"],
+    whoShouldGo:
+      "The whole value chain: installers, EPCs, distributors, financiers and C&I buyers. If you only travel for one Nigerian solar show this year, this is the one the industry gathers around.",
+    summary:
+      "The flagship gathering for Nigerian solar and storage — a two-day expo floor plus a multi-track conference run by Terrapinn with REAN as association partner. The biggest concentration of panels, storage, and C&I deal-flow in the country.",
+    source: "Terrapinn event page",
+  },
+  {
+    id: "evt-05",
+    slug: "refa-renewable-energy-forum-africa-2026",
+    title: "REFA — Renewable Energy Forum Africa 2026",
+    type: "conference",
+    status: "confirmed",
+    keyShow: true,
+    startAt: "2026-11-25T09:00:00+01:00",
+    endAt: "2026-11-26T18:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "Radisson Blu Anchorage, Victoria Island, Lagos",
+    organizer: "AFSIA (Africa Solar Industry Association)",
+    url: "https://www.afsiasolar.com/refa-renewable-energy-forum-africa/",
+    price: "paid",
+    priceNote: "Ticket tiers on the AFSIA page.",
+    audience: ["investors", "epcs", "policy", "distributors", "media"],
+    whoShouldGo:
+      "Utility-scale and C&I developers, DFIs, and corporate offtakers looking for bankable African solar pipelines and structured networking.",
+    summary:
+      "AFSIA's investment-grade forum lands in Lagos: two days of project pipelines, financing structures and 1:1 deal meetings, closing the Nigerian solar calendar year.",
+    source: "AFSIA events page",
+  },
+  {
+    id: "evt-06",
+    slug: "nnepie-2026",
+    title: "Nigeria International New Energy & Power Industry Expo (NNEPIE) 2026",
+    type: "expo",
+    status: "confirmed",
+    keyShow: true,
+    startAt: "2026-09-16T09:00:00+01:00",
+    endAt: "2026-09-18T17:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "Landmark Centre, Victoria Island, Lagos",
+    organizer: "NNEPIE Expo Secretariat",
+    url: "https://www.nnepie.com/",
+    price: "unknown",
+    priceNote: "Visitor registration on the organizer page.",
+    audience: ["distributors", "epcs", "installers", "buyers"],
+    whoShouldGo:
+      "Distributors and EPCs comparing international OEM pricing across solar, storage and power equipment, plus importers meeting Chinese and European manufacturers.",
+    summary:
+      "International new-energy expo covering solar PV, storage, and power industry equipment — a heavy OEM presence and a second-half sourcing window for Q4 stock planning.",
+    source: "Organizer website",
+  },
+  {
+    id: "evt-07",
+    slug: "rean-annual-renewable-energy-conference-2026",
+    title: "REAN Annual Renewable Energy Conference 2026",
+    type: "association",
+    status: "tentative",
+    startAt: "2026-10-21T09:00:00+01:00",
+    endAt: "2026-10-22T17:00:00+01:00",
+    region: "nigeria",
+    city: "Abuja",
+    venue: "Abuja — venue and final dates to be confirmed by REAN",
+    organizer: "Renewable Energy Association of Nigeria (REAN)",
+    url: "https://rean.ng/events",
+    price: "unknown",
+    priceNote: "Member rates typically announced with the agenda.",
+    audience: ["epcs", "distributors", "investors", "policy", "installers"],
+    whoShouldGo:
+      "REAN members and anyone who needs the association's read on policy, standards and the year in review. Dates are a placeholder — watch REAN channels for the confirmed window.",
+    summary:
+      "REAN's annual member conference returns to Abuja. The 2026 edition is expected in Q4 based on past cycles; the exact dates are not yet public, so this entry stays tentative until the association confirms.",
+    source: "REAN announcements",
+  },
+  {
+    id: "evt-08",
+    slug: "niger-state-100mw-solar-prequalification",
+    title: "Niger State 100 MW Solar PV + evacuation — contractor prequalification",
+    type: "tender",
+    status: "confirmed",
+    startAt: "2026-09-14T09:00:00+01:00",
+    endAt: "2026-10-16T12:00:00+01:00",
+    region: "nigeria",
+    city: "Nationwide",
+    venue: "Niger State — submissions per tender documents",
+    organizer: "Niger State energy authorities with development-finance procurement channels",
+    url: "https://www.rea.gov.ng/tenders",
+    price: "free",
+    audience: ["epcs", "investors"],
+    whoShouldGo:
+      "EPC contractors with utility-scale track records, consortium leads, grid-evacuation specialists and civil works partners. Applications were publicly associated with IsDB-linked procurement processing around Sep–Oct 2026.",
+    summary:
+      "Contractor prequalification for a 100 MW solar PV plant with grid evacuation infrastructure in Niger State. Documents outline technical capacity, financial standing and HSE requirements; clarify scope against the official tender notice before mobilizing.",
+    source: "Public procurement notices",
+  },
+  {
+    id: "evt-09",
+    slug: "intersolar-africa-2026",
+    title: "Intersolar Africa 2026",
+    type: "expo",
+    status: "confirmed",
+    startAt: "2026-02-03T09:00:00+01:00",
+    endAt: "2026-02-04T17:00:00+01:00",
+    region: "africa",
+    city: "Nairobi",
+    country: "Kenya",
+    venue: "Sarit Expo Centre, Nairobi, Kenya",
+    organizer: "Solar Promotion International",
+    url: "https://www.intersolar-africa.com",
+    price: "unknown",
+    priceNote: "See organizer page for visitor registration.",
+    audience: ["distributors", "epcs", "investors", "buyers"],
+    whoShouldGo:
+      "Nigerian distributors and developers scanning East African suppliers. Africa watch — not Nigeria-first; listed so teams planning February travel see it next to POWERELEC.",
+    summary:
+      "Two-day solar and storage expo for the African market in Nairobi, timed directly against Nigeria's POWERELEC week. Africa watch entry — happens outside Nigeria.",
+    source: "Intersolar Africa website",
+  },
+  {
+    id: "evt-10",
+    slug: "solar-connect-africa-2026",
+    title: "Solar Connect Africa 2026",
+    type: "conference",
+    status: "confirmed",
+    startAt: "2026-11-11T09:00:00+01:00",
+    endAt: "2026-11-13T17:00:00+01:00",
+    region: "africa",
+    city: "Yaoundé",
+    country: "Cameroon",
+    venue: "Palais des Congrès, Yaoundé, Cameroon",
+    organizer: "Solar Connect Africa",
+    url: "https://www.solarconnectafrica.com",
+    price: "paid",
+    priceNote: "Delegate pricing on the organizer page.",
+    audience: ["investors", "epcs", "distributors", "policy"],
+    whoShouldGo:
+      "Teams working CEMAC/West African cross-border portfolios. Africa watch — not Nigeria-first; useful for francophone market access and regional financiers.",
+    summary:
+      "Regional solar business-matching conference in Yaoundé covering Central and West Africa. Africa watch entry — happens outside Nigeria.",
+    source: "Organizer website",
+  },
+
+  {
+    id: "evt-21",
+    slug: "nigeria-energy-2026",
+    title: "Nigeria Energy 2026",
+    type: "expo",
+    status: "confirmed",
+    keyShow: true,
+    startAt: "2026-10-27T09:00:00+01:00",
+    endAt: "2026-10-29T17:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "Landmark Centre, Victoria Island, Lagos",
+    organizer: "Nigeria Energy (Informa Markets)",
+    url: "https://www.nigeria-energy.com/en/home.html",
+    price: "unknown",
+    priceNote: "Visitor registration and delegate passes on the organizer page.",
+    audience: ["epcs", "distributors", "investors", "policy", "buyers", "installers"],
+    whoShouldGo:
+      "EPCs, distributors, utilities and financiers covering the whole Nigerian power stack — solar and storage sit alongside grid, gensets and T&D on the same floor.",
+    summary:
+      "Three-day international power and energy exhibition with a substantial solar and storage presence, plus a conference programme on generation, distribution and off-grid access. The biggest Q4 sourcing and policy week in Lagos.",
+    source: "Organizer website",
+  },
+  {
+    id: "evt-22",
+    slug: "pv-power-nigeria-2026",
+    title: "PV Power Nigeria 2026",
+    type: "expo",
+    status: "confirmed",
+    keyShow: true,
+    verifyNote: "Confirm venue/dates with the organizer before booking travel.",
+    startAt: "2026-11-24T09:00:00+01:00",
+    endAt: "2026-11-26T17:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "National Stadium, Surulere, Lagos",
+    organizer: "PV Power Nigeria",
+    url: "https://www.pvpower-nigeria.com/",
+    price: "unknown",
+    priceNote: "Registration details on the organizer page.",
+    audience: ["installers", "distributors", "epcs", "buyers", "technicians"],
+    whoShouldGo:
+      "Installers and distributors sourcing panels, inverters and batteries — a mainland venue that is easier to reach than the Island shows for crews coming from Surulere, Yaba and Ikeja.",
+    summary:
+      "Solar PV and power equipment exhibition running over three days at the National Stadium, Surulere. Venue and exact dates should be re-checked against the organizer page before you book travel — this listing is carried early so the week is on your radar.",
+    source: "Organizer website — venue/dates pending re-confirmation",
+  },
+
+  // ——— Additional curated Nigeria entries ———
+
+  {
+    id: "evt-11",
+    slug: "rean-minigrid-om-training-april-2026",
+    title: "REAN Member Training: Mini-grid O&M Best Practice",
+    type: "training",
+    status: "confirmed",
+    startAt: "2026-04-21T10:00:00+01:00",
+    endAt: "2026-04-21T16:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "REAN Secretariat, Ikeja, Lagos (hybrid dial-in available)",
+    organizer: "Renewable Energy Association of Nigeria (REAN)",
+    url: "https://rean.ng/training",
+    price: "paid",
+    priceNote: "Discounted seats for REAN members.",
+    audience: ["technicians", "installers", "epcs"],
+    whoShouldGo:
+      "Mini-grid operations teams, field technicians and site managers responsible for uptime, metering and preventive maintenance schedules.",
+    summary:
+      "Full-day practical training on running reliable mini-grids: preventive maintenance calendars, inverter fleet management, customer metering and spare-parts planning, delivered by operators with live Nigerian sites.",
+    source: "REAN training calendar",
+  },
+  {
+    id: "evt-12",
+    slug: "installer-wiring-standards-workshop-abuja-2026",
+    title: "Installer Wiring & Standards Workshop — Abuja",
+    type: "training",
+    status: "confirmed",
+    startAt: "2026-05-12T09:00:00+01:00",
+    endAt: "2026-05-13T16:00:00+01:00",
+    region: "nigeria",
+    city: "Abuja",
+    venue: "SolarTech Academy, Wuse 2, Abuja",
+    organizer: "SolarTech Academy with NEMSA-registered inspectors",
+    url: "https://rean.ng/training",
+    price: "paid",
+    priceNote: "Two-day workshop fee on the academy page.",
+    audience: ["installers", "technicians"],
+    whoShouldGo:
+      "Working installers who want to wire to code: cable sizing, earthing, protection devices and what NEMSA inspectors actually flag on site.",
+    summary:
+      "Two days of hands-on wiring practice against Nigerian standards — DC string design, earthing and surge protection, and a mock inspection walk-through on day two.",
+    source: "Academy course listing",
+  },
+  {
+    id: "evt-13",
+    slug: "minigrid-developer-briefing-port-harcourt-2026",
+    title: "Mini-grid Developer Briefing — Port Harcourt",
+    type: "association",
+    status: "confirmed",
+    startAt: "2026-06-18T10:00:00+01:00",
+    endAt: "2026-06-18T15:00:00+01:00",
+    region: "nigeria",
+    city: "Port Harcourt",
+    venue: "Hotel Presidential, Port Harcourt",
+    organizer: "Africa Mini-grid Developers Association (AMDA), Nigeria network",
+    url: "https://africaamda.org/events",
+    price: "unknown",
+    priceNote: "Briefing is typically open to developers with RSVP.",
+    audience: ["investors", "epcs", "policy"],
+    whoShouldGo:
+      "Mini-grid developers active in the South-South, state electrification desk officers, and financiers sizing up Delta-region site pipelines.",
+    summary:
+      "Half-day briefing on the South-South mini-grid pipeline: site data, state-level permitting lessons and where developer capital is moving after the latest REA funding windows.",
+    source: "AMDA Nigeria network notice",
+  },
+  {
+    id: "evt-14",
+    slug: "solar-technician-job-fair-kano-2026",
+    title: "Solar Technician Job Fair — Kano",
+    type: "expo",
+    status: "tentative",
+    startAt: "2026-07-24T09:00:00+01:00",
+    endAt: "2026-07-24T15:00:00+01:00",
+    region: "nigeria",
+    city: "Kano",
+    venue: "Murtala Muhammad Library Complex, Kano",
+    organizer: "NorthSolar Jobs Initiative",
+    url: "https://rean.ng/events",
+    price: "free",
+    audience: ["technicians", "installers"],
+    whoShouldGo:
+      "Certified and apprentice technicians in the North-West looking for placements, plus companies hiring field crews for Kano, Kaduna and Katsina projects.",
+    summary:
+      "One-day hiring fair matching solar employers with technicians across the North-West — CV clinics in the morning, employer booths and on-the-spot practical assessments after. Date provisional pending venue confirmation.",
+    source: "Organizer announcement",
+  },
+  {
+    id: "evt-15",
+    slug: "naseni-solar-manufacturing-open-day-2026",
+    title: "NASENI Solar Local Manufacturing Open Day",
+    type: "association",
+    status: "confirmed",
+    startAt: "2026-08-15T10:00:00+01:00",
+    endAt: "2026-08-15T14:00:00+01:00",
+    region: "nigeria",
+    city: "Abuja",
+    venue: "NASENI solar panel plant, Gora, Karu — shuttle from central Abuja",
+    organizer: "NASENI Solar Energy Ltd",
+    url: "https://www.naseni.gov.ng",
+    price: "free",
+    audience: ["epcs", "distributors", "investors", "policy", "media"],
+    whoShouldGo:
+      "EPCs and distributors weighing Nigerian-assembled modules against imports, plus anyone who wants to see local lamination and testing lines first-hand.",
+    summary:
+      "Open day at the NASENI solar assembly plant: line tours, quality lab walk-through and a panel with buyers on bankability of locally assembled modules as national capacity climbs toward ~300 MW.",
+    source: "NASENI public notice",
+  },
+  {
+    id: "evt-16",
+    slug: "ci-rooftop-financing-clinic-lagos-2026",
+    title: "C&I Rooftop Financing Clinic — Lagos",
+    type: "training",
+    status: "confirmed",
+    startAt: "2026-09-09T09:30:00+01:00",
+    endAt: "2026-09-09T13:30:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "Impact Hub, Ikoyi, Lagos",
+    organizer: "Lagos C&I Finance Circle",
+    url: "https://rean.ng/events",
+    price: "paid",
+    priceNote: "Clinic seat fee on the organizer page; coffee session included.",
+    audience: ["investors", "epcs", "buyers"],
+    whoShouldGo:
+      "C&I developers structuring leases and PPAs, and finance teams at factories, malls and towers comparing diesel cost curves against financed rooftop solar.",
+    summary:
+      "A working clinic — not a conference. Bring a live deal: lenders and developers work through term sheets, tenor, FX exposure and guarantee options for commercial rooftops from 100 kW upward.",
+    source: "Organizer registration page",
+  },
+  {
+    id: "evt-17",
+    slug: "kaduna-state-electrification-stakeholder-meeting-2026",
+    title: "State Electrification Stakeholder Meeting — Kaduna",
+    type: "association",
+    status: "tentative",
+    startAt: "2026-08-27T10:00:00+01:00",
+    endAt: "2026-08-27T15:00:00+01:00",
+    region: "nigeria",
+    city: "Nationwide",
+    venue: "Kaduna State Electricity Board Hall, Kaduna",
+    organizer: "Kaduna State Power Sector Working Group",
+    url: "https://rean.ng/events",
+    price: "free",
+    audience: ["policy", "epcs", "investors"],
+    whoShouldGo:
+      "Developers and EPCs tracking state-led electrification programmes in the North-West, and community energy partners engaging the Kaduna market.",
+    summary:
+      "Working meeting between the state power team, developers and community representatives on electrification priorities for the year. Convened in Kaduna; date is provisional and will firm up with the state's notice.",
+    source: "Working group circular",
+  },
+  {
+    id: "evt-18",
+    slug: "webinar-local-currency-finance-solar-generators-2026",
+    title: "Webinar: Local-Currency Finance for Solar Generators",
+    type: "webinar",
+    status: "unconfirmed",
+    startAt: "2026-09-03T15:00:00+01:00",
+    endAt: "2026-09-03T16:30:00+01:00",
+    region: "nigeria",
+    city: "Online",
+    venue: "Zoom / YouTube Live — link on registration",
+    organizer: "NairaGreen Finance Webinars",
+    url: "https://rean.ng/events",
+    price: "free",
+    audience: ["investors", "distributors", "installers", "buyers"],
+    whoShouldGo:
+      "Solar generator sellers and financiers trying to price naira-denominated loans and PAYGo plans without passing FX shocks to customers.",
+    summary:
+      "Ninety-minute webinar on structuring naira finance for solar generator portfolios: credit enhancement, receivables discounting and hedging realities. Listed from a circulating save-the-date — verify with the organizer before dialling in.",
+    source: "Circulated save-the-date",
+  },
+  {
+    id: "evt-19",
+    slug: "voltstack-inverter-battery-launch-lagos-2026",
+    title: "Distributor Product Launch: Hybrid Inverter + LFP Battery Line",
+    type: "expo",
+    status: "confirmed",
+    startAt: "2026-03-20T11:00:00+01:00",
+    endAt: "2026-03-20T15:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "The Dome, Lekki Phase 1, Lagos",
+    organizer: "VoltStack Distribution Ltd",
+    url: "https://rean.ng/events",
+    price: "free",
+    audience: ["installers", "distributors", "buyers"],
+    whoShouldGo:
+      "Installers and resellers looking for a new hybrid inverter and lithium battery line with local warranty support and trade pricing announced at the event.",
+    summary:
+      "Trade launch for a new hybrid inverter and LFP battery range aimed at Nigerian homes and SMEs — live teardown demos, warranty terms and opening trade pricing for registered installers.",
+    source: "Distributor invitation",
+  },
+  {
+    id: "evt-20",
+    slug: "quality-fire-safety-briefing-lagos-2026",
+    title: "Quality & Fire-Safety Briefing with Industry Association",
+    type: "association",
+    status: "confirmed",
+    startAt: "2026-11-04T10:00:00+01:00",
+    endAt: "2026-11-04T13:00:00+01:00",
+    region: "nigeria",
+    city: "Lagos",
+    venue: "NECA House, Ikeja, Lagos",
+    organizer: "REAN with Lagos State Safety Commission",
+    url: "https://rean.ng/events",
+    price: "free",
+    audience: ["installers", "epcs", "technicians", "policy"],
+    whoShouldGo:
+      "Installers, EPC site leads and facility managers — DC isolators, battery rooms, and the failure patterns behind recent fire incidents in commercial buildings.",
+    summary:
+      "Joint briefing with the state safety commission on installation quality and fire prevention: isolator failures, battery-room ventilation, labelling and the inspection checklist inspectors now apply.",
+    source: "REAN circular",
+  },
+];
+
+export const nigeriaEvents: SolarEvent[] = events
+  .filter((e) => e.region === "nigeria")
+  .sort(byStartAt);
+
+export const africaWatchEvents: SolarEvent[] = events
+  .filter((e) => e.region === "africa")
+  .sort(byStartAt);
+
+export const flagshipEvent: SolarEvent | undefined = events.find((e) => e.flagship);
+
+/** Anchor Nigerian shows for the year — always surfaced on Home, any date. */
+export const keyShows: SolarEvent[] = events.filter((e) => e.keyShow).sort(byStartAt);
+
+export function getEventBySlug(slug: string): SolarEvent | undefined {
+  return events.find((e) => e.slug === slug);
+}
+
+export function relatedEvents(e: SolarEvent, count = 3): SolarEvent[] {
+  return nigeriaEvents
+    .filter((x) => x.id !== e.id && (x.type === e.type || x.city === e.city))
+    .sort(byStartAt)
+    .slice(0, count);
+}

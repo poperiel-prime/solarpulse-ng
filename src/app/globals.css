@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b1220;
+  --color-surface: #121a2b;
+  --color-card: #182238;
+  --color-card-2: #1d2a45;
+  --color-gold: #f5b942;
+  --color-gold-hover: #e0a52e;
+  --color-mint: #3ddc97;
+  --color-cream: #f4f1ea;
+  --color-mist: #9aa6b2;
+  --color-danger: #e85d4c;
+  --color-line: #2a3650;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink font-sans text-cream antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-gold) 45%, transparent);
+    color: var(--color-cream);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  input,
+  select,
+  textarea {
+    color-scheme: dark;
+  }
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Sun-glow backdrop used on hero/flagship surfaces. */
+.sun-glow {
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, color-mix(in oklab, var(--color-gold) 16%, transparent), transparent 60%),
+    radial-gradient(45rem 26rem at -10% 110%, color-mix(in oklab, var(--color-mint) 9%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--color-ink), var(--color-ink));
+}
+
+.grid-fade {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--color-line) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--color-line) 55%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(75% 70% at 50% 35%, black, transparent 80%);
+}
+
+@keyframes pulse-travel {
+  0% {
+    stroke-dashoffset: 320;
+  }
+  100% {
+    stroke-dashoffset: -320;
+  }
+}
+
+.animate-pulse-line {
+  stroke-dasharray: 110 530;
+  animation: pulse-travel 5s linear infinite;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes soft-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-soft-glow {
+  animation: soft-glow 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-line,
+  .animate-rise,
+  .animate-soft-glow {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
