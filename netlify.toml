@@ -1,0 +1,8 @@
+[[plugins]]
+    package = "@netlify/plugin-nextjs"
+    [plugins.inputs]
+	disable = true
+
+[build]
+    command = "npm run build"
+    plublish = ".next"
