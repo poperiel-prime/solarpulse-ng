@@ -1,8 +1,6 @@
-[[plugins]]
-    package = "@netlify/plugin-nextjs"
-    [plugins.inputs]
-	disable = true
-
-[build]
+[[build]]
     command = "npm run build"
     plublish = ".next"
+
+[build.environment]
+    NETLIFY_NEXT_PLUGIN_SKIP = "true"
