@@ -3,7 +3,7 @@ import { events as seedEvents } from "@/lib/events";
 import { isAdminRequest } from "@/lib/server/auth";
 import { validateDraft } from "@/lib/server/validate";
 import type { EventDraft } from "@/lib/types";
-import { prisma } from "@/lib/prisma/db";
+import { prisma } from "@/src/prisma/db";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -11,7 +11,6 @@ export const runtime = "nodejs";
 /** Read the review queue from Neon PostgreSQL */
 export async function GET() {
   try {
-    // Fetches the queue data straight from Neon cloud
     const drafts = await prisma.eventDraft.findMany({
       orderBy: { createdAt: "desc" },
     });
@@ -47,7 +46,6 @@ export async function POST(req: Request) {
   }
 
   try {
-    // 1. Fetch current items from database to check for duplicates
     const currentInbox = await prisma.eventDraft.findMany();
     const published = await prisma.solarEvent.findMany();
 
@@ -70,7 +68,6 @@ export async function POST(req: Request) {
       created.push(draft);
     }
 
-    // 2. Save the fresh unique drafts directly to Neon Cloud
     if (created.length > 0) {
       await prisma.eventDraft.createMany({
         data: created.map(draft => ({
