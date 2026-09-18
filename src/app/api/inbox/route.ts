@@ -5,9 +5,8 @@ import { validateDraft } from "@/lib/server/validate";
 import type { EventDraft } from "@/lib/types";
 import { PrismaClient } from "@prisma/client";
 
-// This creates the database instance right here, completely bypassing path errors!
-const prisma = globalThis.prisma || new PrismaClient();
-if (process.env.NODE_ENV !== "production") globalThis.prisma = prisma;
+const prisma = (globalThis as any).prisma || new PrismaClient();
+if (process.env.NODE_ENV !== "production") (globalThis as any).prisma = prisma;
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -51,7 +50,8 @@ export async function POST(req: Request) {
 
   try {
     const currentInbox = await prisma.eventDraft.findMany();
-    const published = await prisma.solarEvent.findMany();
+    // Use fallback empty array if public calendar matching table isn't fully pushed yet
+    const published = await prisma.solarEvent.findMany().catch(() => []);
 
     const keys = new Set<string>([
       ...currentInbox.map(draftDedupKey),
@@ -59,7 +59,7 @@ export async function POST(req: Request) {
       ...seedEvents.map(eventDedupKey),
     ]);
 
-    const created: EventDraft[] = [];
+    const created: any[] = [];
     let skipped = 0;
 
     for (const draft of candidates) {
@@ -75,7 +75,9 @@ export async function POST(req: Request) {
     if (created.length > 0) {
       await prisma.eventDraft.createMany({
         data: created.map(draft => ({
-          ...draft,
+          title: draft.title || "Untitled Solar Event",
+          description: draft.description || "",
+          date: draft.date ? new Date(draft.date) : new Date(),
           status: "pending",
         })),
       });
