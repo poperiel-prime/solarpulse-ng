@@ -5,6 +5,7 @@ import { validateDraft } from "@/lib/server/validate";
 import type { EventDraft } from "@/lib/types";
 import { PrismaClient } from "@prisma/client";
 
+// Only ONE clean connection instance assigned globally
 const prisma = (globalThis as any).prisma || new PrismaClient();
 if (process.env.NODE_ENV !== "production") (globalThis as any).prisma = prisma;
 
@@ -50,7 +51,6 @@ export async function POST(req: Request) {
 
   try {
     const currentInbox = await prisma.eventDraft.findMany();
-    // Use fallback empty array if public calendar matching table isn't fully pushed yet
     const published = await prisma.solarEvent.findMany().catch(() => []);
 
     const keys = new Set<string>([
