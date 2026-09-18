@@ -3,9 +3,13 @@ import { events as seedEvents } from "@/lib/events";
 import { isAdminRequest } from "@/lib/server/auth";
 import { validateDraft } from "@/lib/server/validate";
 import type { EventDraft } from "@/lib/types";
-import { prisma } from "@/lib/server/store";
-export const dynamic = "force-dynamic";
+import { PrismaClient } from "@prisma/client";
 
+// This creates the database instance right here, completely bypassing path errors!
+const prisma = globalThis.prisma || new PrismaClient();
+if (process.env.NODE_ENV !== "production") globalThis.prisma = prisma;
+
+export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 /** Read the review queue from Neon PostgreSQL */
