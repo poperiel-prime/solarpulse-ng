@@ -3,7 +3,8 @@ import { events as seedEvents } from "@/lib/events";
 import { isAdminRequest } from "@/lib/server/auth";
 import { validateDraft } from "@/lib/server/validate";
 import type { EventDraft } from "@/lib/types";
-import { prisma } from "@/prisma/db";
+import { prisma } from "../../../prisma/db";
+
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
