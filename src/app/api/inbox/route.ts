@@ -4,10 +4,8 @@ import { isAdminRequest } from "@/lib/server/auth";
 import { validateDraft } from "@/lib/server/validate";
 import type { EventDraft } from "@/lib/types";
 import { prisma } from "@/lib/server/store";
-
-
-
 export const dynamic = "force-dynamic";
+
 export const runtime = "nodejs";
 
 /** Read the review queue from Neon PostgreSQL */
